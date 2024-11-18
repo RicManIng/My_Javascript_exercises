@@ -1,0 +1,42 @@
+body{
+    width: 90%;
+    margin: 0 auto;
+    background-color: black;
+    color: cornsilk;
+}
+
+main{
+    overflow: auto;
+}
+
+nav, footer, #feature{
+    margin: 1%;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+li{
+    display: inline;
+    padding: 1%;
+}
+
+nav, footer{
+    background-color: #333;
+    padding: 1% 0;
+}
+
+#feature{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.image{
+    flex-basis: auto;
+    align-self: auto;
+}

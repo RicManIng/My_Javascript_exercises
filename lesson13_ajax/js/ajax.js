@@ -24,3 +24,24 @@
     - while waiting for the response, the browser can do other things
     - when the response is ready, the browser can display the data (an event is triggered)
 */
+
+
+// 1. Create an XMLHttpRequest object
+var xhr = new XMLHttpRequest();
+
+xhr.onload = function() {
+    if (xhr.status == 200) {
+        responseObject = JSON.parse(xhr.responseText);
+        var newContent = '';
+        for (var i = 0; i < responseObject.gallery.lenght; i++) {
+            newContent += '<div class="image">';
+            newContent += '<img src="' + responseObject.gallery[i].img_url + '"width="200" height="200"></img></div>';
+        }
+        document.getElementById('content').innerHTML = newContent;
+    }
+}
+
+// 2. Configure it: GET-request for the URL /article/.../load
+xhr.open('GET', 'databases/database.json', true);
+// 
+xhr.send(null);

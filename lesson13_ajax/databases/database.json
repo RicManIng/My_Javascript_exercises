@@ -1,0 +1,9 @@
+{
+    "gallery": [
+        {"description": "Image 01", "img_url": "resources/img/img01.jpg"},
+        {"description": "Image 02", "img_url": "resources/img/img02.jpg"},
+        {"description": "Image 03", "img_url": "resources/img/img03.jpg"},
+        {"description": "Image 04", "img_url": "resources/img/img04.jpg"},
+        {"description": "Image 05", "img_url": "resources/img/img05.jpg"}
+    ]
+}
