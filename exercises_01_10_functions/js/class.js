@@ -1,49 +1,63 @@
 /**
- *  this class contain all methods to implement the calculator of exercises 1 - 10
- * @author Riccardo Mancinelli
+ *  this class contains all functions and methods for exercises 1 - 10
+ * @autor Riccardo Mancinelli
  * @copyright 2022
  * @license MIT 
  * @version 1.0.0
  */
 
-class Calculator {
-    /** no constructor needed in this case */
+export class Calculator {
     constructor() { 
         this.checkMinArr = [];
         this.sortArr = [];
     }
 
     /**
-     * function to load the arrays from a JSON file
-     * @returns {void}
-    */
-    loadArrays(){
-        const fs = require('fs');
-        // Read the JSON file
-        fs.readFile('path/to/your/file.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error('Errore nella lettura del file:', err);
-            return;
-        }
+     * function to load arrays from a JSON file using fetch
+     * @returns {Promise<void>}
+     */
+    async loadArrays(){
         try {
-            const jsonData = JSON.parse(data);
+            const response = await fetch('./database/database.json');
+            if (!response.ok) {
+                throw new Error(`Error opening file: ${response.statusText}`);
+            }
+            const jsonData = await response.json();
             this.checkMinArr = jsonData["checkMin"];
             this.sortArr = jsonData["sort"];
+            console.log('Arrays success loaded:', this.checkMinArr, this.sortArr);
         } catch (err) {
-            console.error('Errore nel parsing del JSON:', err);
+            console.error('Error opening file:', err);
         }
-        });
     }
 
-    saveArrays(){
+    /**
+     * function to save arrays to a JSON file using XMLHttpRequest -- not functioning need to install a server (actually waiting for other exercises)
+     * @returns {Promise<void>}
+     */
+    async saveArrays(){
+        let xhr = new XMLHttpRequest();
 
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                const dataToSave = {
+                    checkMin: this.checkMinArr,
+                    sort: this.sortArr
+                };
+                console.log('Arrays success saved:', dataToSave);
+                JSON.stringify(dataToSave);
+            }
+        }
+
+        xhr.open('POST', './database/database.json', true);
+        xhr.send(null);
     }
 
     /**
      * function to get data from querystring
      * @param {string} name - name of the parameter to get
      * @returns {string} - value of the parameter
-     */
+    */
     queryString(name) {
         let value = null;
 
@@ -51,6 +65,7 @@ class Calculator {
             get: (searchParams, prop) => searchParams.has(prop) ? searchParams.get(prop) : null
         });
         value = params[name];
+        console.log(`Value of ${name}: ${value}`);
         return value;
     }
 
@@ -71,7 +86,7 @@ class Calculator {
      * @returns {number} - perimeter of the rectangle 
     */
     rectPerimeter(base, height) {
-        return 2 * (base + height);
+        return 2 * (Number(base) + Number(height));
     }
 
     /**
@@ -99,9 +114,10 @@ class Calculator {
      * @param {number} n - number to calculate the sum
      * @returns {number} - sum of the previous n numbers
     */
-    sumToN(n){
+    sumToN(number){
         let i;
         let sum = 0;
+        let n = Number(number);
         if(n>0){
             for(i = 0; i<n; i++){
                 sum += i;
@@ -117,9 +133,10 @@ class Calculator {
      * @param {number} n - number to calculate the sum
      * @returns {number} - sum of the previous n even numbers
     */
-    sumOddToN(n){
+    sumOddToN(number){
         let i;
         let sum = 0;
+        let n = Number(number);
         if(n>0){
             for(i = 0; i<n; i++){
                 if(i%2 !== 0){
@@ -137,20 +154,22 @@ class Calculator {
      * @param {Array} arr - array of numbers
      * @returns {number} - minimum value in the array
     */
-    minCheck(arr){
-        if(arr.length !== 0){
-            return Math.min(...arr);
+    minCheck(){
+        if(this.checkMinArr.length !== 0){
+            return Math.min(...this.checkMinArr);
         } else {
             return 0;
         }
     }
 
-    minCheckAddArr(){
-            
+    minCheckAddArr(value){
+        this.checkMinArr.push(value);
+        this.saveArrays();    
     }
 
     minCheckResetArr(){
-            
+        this.checkMinArr = [];
+        this.saveArrays();        
     }
 
     /**
@@ -158,15 +177,17 @@ class Calculator {
      * @param {Array} arr - array of numbers
      * @returns {Array} - sorted array
     */
-    sortArray(arr){
-        return arr.sort((a, b) => a - b);
+    sortArray(){
+        return this.sortArr.sort((a, b) => a - b);
     }
 
-    sortArrayAddArr(){
-            
+    sortArrayAddArr(value){
+        this.sortArr.push(value);
+        this.saveArrays();        
     }
 
     sortArrayResetArr(){
-            
+        this.sortArr = [];
+        this.saveArrays();        
     }
 }

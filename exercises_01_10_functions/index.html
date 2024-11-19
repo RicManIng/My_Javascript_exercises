@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esercitazioni 1 - 10</title>
-    <script tyoe="application/javascript" src="js/functions.js"></script>
+    <script type="module" src="js/functions.js"></script>
 </head>
 <body>
     <h1>Calculator</h1>
@@ -48,6 +48,10 @@
             <label for="base">Insert base: </label>
             <input type="number" name="base" id="base" required>
             <br>
+            <select name="calc-type" id="calc-type">
+                <option value="Area">Area</option>
+                <option value="Perimeter">Perimeter</option>
+            </select>
             <p>Result : <div id="rect-cond-result"></div></p>
             <br>
             <input type="submit" name="submit" value="rect-cond-calc">
@@ -78,18 +82,47 @@
         </form>
     </div>
     <br>
-    <div class="sum-to-n-even">
-        <h2>Sum of first N even numbers</h2>
+    <div class="sum-to-n-odd">
+        <h2>Sum of first N odd numbers</h2>
         <form action="" method="GET">
             <label for="number">Insert a number: </label>
             <input type="number" name="number" id="number" required>
             <br>
-            <p>Result : <div id="sum-to-n-even-result"></div></p>
+            <p>Result : <div id="sum-to-n-odd-result"></div></p>
             <br>
-            <input type="submit" name="submit" value="sum-to-n-even-calc">
+            <input type="submit" name="submit" value="sum-to-n-odd-calc">
         </form>
     </div>
     <br>
-    
+    <div class="check-min-array">
+        <h2>Find minimum value in array</h2>
+        <form action="" method="GET">
+            <label for="array">Insert an element in array: </label>
+            <input type="text" name="array" id="array" required>
+            <br>
+            <p>Result : <div id="check-min-array-result"></div></p>
+            <br>
+            <input type="submit" name="submit" value="check-min-array-add">Add
+            <input type="submit" name="submit" value="check-min-array-reset">Reset
+            <input type="submit" name="submit" value="check-min-array-calc">Check
+        </form>
+        <form>
+            <input type="hidden" name="submit" value="check-min-array-add">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div>
+        <h2>Array sort</h2>
+        <form action="" method="GET">
+            <label for="array">Insert an element in array: </label>
+            <input type="text" name="array" id="array" required>
+            <br>
+            <p>Result : <div id="array-sort-result"></div></p>
+            <br>
+            <input type="submit" name="submit" value="array-sort-add">Add
+            <input type="submit" name="submit" value="array-sort-reset">Reset
+            <input type="submit" name="submit" value="array-sort-calc">Sort
+        </form>
+    </div>
 </body>
 </html>
