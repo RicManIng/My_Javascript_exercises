@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esercitazioni 1 - 10</title>
+    <title>Exercises 1 - 10</title>
     <script type="module" src="js/functions.js"></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
     </div>
     <br>
     <div class="rect-cond">
-        <h2>Calculate the rectangle area or perimeter conditionaly</h2>
+        <h2>Calculate the rectangle area or perimeter conditional</h2>
         <form action="" method="GET">
             <label for="height">Insert height: </label>
             <input type="number" name="height" id="height" required>
@@ -97,30 +97,33 @@
     <div class="check-min-array">
         <h2>Find minimum value in array</h2>
         <form action="" method="GET">
-            <label for="array">Insert an element in array: </label>
-            <input type="text" name="array" id="array" required>
+            <label for="array-length-1">Insert the number of element in your array: </label>
+            <input type="number" name="array-length" id="array-length-1">
+            <br>
+            <div id="array-elts-1">
+
+            </div>
             <br>
             <p>Result : <div id="check-min-array-result"></div></p>
             <br>
-            <input type="submit" name="submit" value="check-min-array-add">Add
-            <input type="submit" name="submit" value="check-min-array-reset">Reset
             <input type="submit" name="submit" value="check-min-array-calc">Check
         </form>
         <form>
             <input type="hidden" name="submit" value="check-min-array-add">
-            <button type="submit">Add</button>
         </form>
     </div>
     <div>
         <h2>Array sort</h2>
         <form action="" method="GET">
-            <label for="array">Insert an element in array: </label>
-            <input type="text" name="array" id="array" required>
+            <label for="array-length-2">Insert the number of element in your array: </label>
+            <input type="number" name="array-length" id="array-length-2">
+            <br>
+            <div id="array-elts-2">
+
+            </div>
             <br>
             <p>Result : <div id="array-sort-result"></div></p>
             <br>
-            <input type="submit" name="submit" value="array-sort-add">Add
-            <input type="submit" name="submit" value="array-sort-reset">Reset
             <input type="submit" name="submit" value="array-sort-calc">Sort
         </form>
     </div>

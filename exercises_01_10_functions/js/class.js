@@ -7,51 +7,7 @@
  */
 
 export class Calculator {
-    constructor() { 
-        this.checkMinArr = [];
-        this.sortArr = [];
-    }
-
-    /**
-     * function to load arrays from a JSON file using fetch
-     * @returns {Promise<void>}
-     */
-    async loadArrays(){
-        try {
-            const response = await fetch('./database/database.json');
-            if (!response.ok) {
-                throw new Error(`Error opening file: ${response.statusText}`);
-            }
-            const jsonData = await response.json();
-            this.checkMinArr = jsonData["checkMin"];
-            this.sortArr = jsonData["sort"];
-            console.log('Arrays success loaded:', this.checkMinArr, this.sortArr);
-        } catch (err) {
-            console.error('Error opening file:', err);
-        }
-    }
-
-    /**
-     * function to save arrays to a JSON file using XMLHttpRequest -- not functioning need to install a server (actually waiting for other exercises)
-     * @returns {Promise<void>}
-     */
-    async saveArrays(){
-        let xhr = new XMLHttpRequest();
-
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                const dataToSave = {
-                    checkMin: this.checkMinArr,
-                    sort: this.sortArr
-                };
-                console.log('Arrays success saved:', dataToSave);
-                JSON.stringify(dataToSave);
-            }
-        }
-
-        xhr.open('POST', './database/database.json', true);
-        xhr.send(null);
-    }
+    constructor() { }
 
     /**
      * function to get data from querystring
@@ -154,22 +110,12 @@ export class Calculator {
      * @param {Array} arr - array of numbers
      * @returns {number} - minimum value in the array
     */
-    minCheck(){
-        if(this.checkMinArr.length !== 0){
-            return Math.min(...this.checkMinArr);
+    minCheck(arr){
+        if(arr.length !== 0){
+            return Math.min(...arr);
         } else {
             return 0;
         }
-    }
-
-    minCheckAddArr(value){
-        this.checkMinArr.push(value);
-        this.saveArrays();    
-    }
-
-    minCheckResetArr(){
-        this.checkMinArr = [];
-        this.saveArrays();        
     }
 
     /**
@@ -177,17 +123,7 @@ export class Calculator {
      * @param {Array} arr - array of numbers
      * @returns {Array} - sorted array
     */
-    sortArray(){
-        return this.sortArr.sort((a, b) => a - b);
-    }
-
-    sortArrayAddArr(value){
-        this.sortArr.push(value);
-        this.saveArrays();        
-    }
-
-    sortArrayResetArr(){
-        this.sortArr = [];
-        this.saveArrays();        
+    sortArray(arr){
+        return arr.sort((a, b) => a - b);
     }
 }

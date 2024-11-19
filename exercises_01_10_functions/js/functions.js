@@ -2,11 +2,6 @@ import { Calculator } from './class.js';
 
 // create a new instance of the class Calculator
 const calc = new Calculator();
-calc.loadArrays();
-
-// console.log the arrays
-console.log(calc.checkMinArr);
-console.log(calc.sortArr);
 
 var submit_type = calc.queryString('submit');
 
@@ -50,26 +45,54 @@ switch (submit_type) {
         result_sum_to_n_odd.textContent = calc.sumOddToN(n_odd);
         console.log('sum-to-n-odd calculated');
         break;
-    case 'check-min-array-add':
-        calc.checkMinArr.push(calc.queryString('number'));
-        break;
-    case 'check-min-array-reset':
-        calc.minCheckResetArr();
-        break;
     case 'check-min-array-calc':
         let result_check_min = document.getElementById('check-min-array-result');
-        result_check_min.textContent = calc.minCheck();
-        break;
-    case 'array-sort-add':
-        calc.sortArrayAddArr(calc.queryString('number'));
-        break;
-    case 'array-sort-reset':
-        calc.sortArrayResetArr();
+        let arrayLengthCheck = calc.queryString('array-length');
+        let tempArrayCheck = [];
+        for(let i = 0; i<arrayLengthCheck; i++){
+            tempArrayCheck.push(calc.queryString(`array-elt-${i}`));
+        }
+        result_check_min.textContent = calc.minCheck(tempArrayCheck);
         break;
     case 'array-sort-calc':
         let result_sort = document.getElementById('array-sort-result');
-        result_sort.textContent = calc.sortArray();
+        let arrayLength = calc.queryString('array-length');
+        let tempArray = [];
+        for(let i = 0; i<arrayLength; i++){
+            tempArray.push(calc.queryString(`array-elt-${i}`));
+        }
+        result_sort.textContent = calc.sortArray(tempArray);
         break;
     default:
         console.log('Unknown submit type');
 }
+
+function createArrayElt(position, value){
+    let i = 0;
+    for(i = 0; i < value; i++){
+        let input = document.createElement('input');
+        input.setAttribute('type', 'number');
+        input.setAttribute('name', `array-elt-${i}`);
+        input.setAttribute('class', `array-elt`);
+        input.setAttribute('placeholder', `0`);
+        let br = document.createElement('br');
+        position.appendChild(input);
+        position.appendChild(br);
+    }
+}
+
+
+let arrayLength1 = document.getElementById('array-length-1');
+let arrayLength2 = document.getElementById('array-length-2');
+
+arrayLength1.addEventListener('blur', function(){
+    let position = document.getElementById('array-elts-1');
+    position.innerHTML = '';
+    createArrayElt(position, arrayLength1.value);
+});
+
+arrayLength2.addEventListener('blur', function(){
+    let position = document.getElementById('array-elts-2');
+    position.innerHTML = '';
+    createArrayElt(position, arrayLength2.value);
+});
