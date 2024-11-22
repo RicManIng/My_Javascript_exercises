@@ -50,6 +50,42 @@ function clearErrorClass(){
     message.classList.remove('error-input');
 }
 
+function showNameConditions(){
+    let infoMsg = 'Name must be between 2 and 50 characters';
+    let p = document.createElement('p');
+    p.innerHTML = infoMsg;
+    p.id = 'info-msg';
+    let nameInput = document.getElementById('name');
+    if(nameInput){
+        nameInput.insertAdjacentElement('afterend', p);
+    }
+}
+
+function hideNameConditions(){
+    let p = document.getElementById('info-msg');
+    if(p){
+        p.remove();
+    }
+}
+
+function showMsgConditions(){
+    let infoMsg = 'Message must be between 10 and 500 characters';
+    let p = document.createElement('p');
+    p.innerHTML = infoMsg;
+    p.id = 'info-msg';
+    let messageInput = document.getElementById('message');
+    if(messageInput){
+        messageInput.insertAdjacentElement('afterend', p);
+    }
+}
+
+function hideMsgConditions(){
+    let p = document.getElementById('info-msg');
+    if(p){
+        p.remove();
+    }
+}
+
 function checkValidationForm(){
     clearErrorClass();
 
@@ -95,4 +131,12 @@ function checkValidationForm(){
 
 window.onload = function(){
     document.getElementById('submit').onclick = checkValidationForm;
+
+    const nameInput = document.getElementById('name');
+    nameInput.addEventListener('focus', showNameConditions);
+    nameInput.addEventListener('blur', hideNameConditions);
+
+    const messageInput = document.getElementById('message');
+    messageInput.addEventListener('focus', showMsgConditions);
+    messageInput.addEventListener('blur', hideMsgConditions);
 }

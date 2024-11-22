@@ -48,3 +48,7 @@ form .error-label{
 h1{
     text-align: center;
 }
+
+#info-msg{
+    color: grey;
+}
