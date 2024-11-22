@@ -37,8 +37,8 @@ input, textarea{
 }
 
 form .error-input{
-    color: rgb(60, 0, 0);
-    background-color: rgb(255, 103, 103);
+    color: rgb(247, 0, 0);
+    background-color: rgb(77, 0, 0);
 }
 
 form .error-label{
