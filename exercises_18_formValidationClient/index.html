@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 18 - formValidationClient</title>
+    <link rel="stylesheet" href="resources/style.css">
+    <script src="js/validation.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Contact</h1>
+        <form novalidate>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="insert your name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="insert your email"><br><br>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="insert your phone"><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required placeholder="insert your message" rows="10"></textarea><br><br>
+            <button type="button">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

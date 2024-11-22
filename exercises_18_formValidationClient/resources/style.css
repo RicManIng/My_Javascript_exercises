@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 50%;
+    margin: 50px 0px;
+}
+
+label, input, textarea{
+    width: 94%;
+    padding: 3%;
+    border-radius: 15px;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+label{
+    color: grey;
+}
+
+input, textarea{
+    color: darkslategray;
+    background-color: rgb(230, 230, 230);
+    border: none;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+form .error-input{
+    color: rgb(60, 0, 0);
+    background-color: rgb(255, 103, 103);
+}
+
+form .error-label{
+    color: rgb(124, 0, 0);
+}
+
+h1{
+    text-align: center;
+}
