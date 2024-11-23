@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 31 password security</title>
+    <script src="js/password.js"></script>
+    <style>
+        fieldset{
+            padding: 20px;
+        }
+        div#progressBar{
+            border: 1px solid #cccccc;
+            height: 15px;
+            margin: 10px 0 0 0;
+        }
+        div#bar{
+            background-color: #ffffff;
+            height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Security</h1>
+    <form>
+        <fieldset>
+            <legend>Password</legend>
+            <label for="psw">Verify password : </label>
+            <br>
+            <input type="text" id="psw">
+            <div id="progressBar">
+                <div id="bar"></div>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
